@@ -64,7 +64,7 @@ public class trashStack implements StackInterface {
         if (!(stack.isEmpty())) {
             return stack.get(0);
         } else {
-            return null;
+            return "The stack is empty";
         }
     }
 

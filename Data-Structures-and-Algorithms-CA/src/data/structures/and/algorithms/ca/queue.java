@@ -19,6 +19,11 @@ public class queue implements QueueInterface {
     }
 
     @Override
+    public String toString() {
+        return "queue{" + "event=" + event + '}';
+    }
+
+    @Override
     public Object dequeue() {
         if (!event.isEmpty()) {
             return event.remove(0);
@@ -37,7 +42,7 @@ public class queue implements QueueInterface {
         if (!event.isEmpty()) {
             return event.get(0);
         } else {
-            return null;
+            return "The queue is empty";
         }
     }
 

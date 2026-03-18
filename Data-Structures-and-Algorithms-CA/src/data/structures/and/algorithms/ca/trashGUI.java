@@ -175,7 +175,7 @@ public class trashGUI extends javax.swing.JFrame {
         trashStack.push(placeholder);
 
         clearAll();
-        displayTA.setText("Trash added to stack");
+        displayTA.append("Trash added to stack");
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
