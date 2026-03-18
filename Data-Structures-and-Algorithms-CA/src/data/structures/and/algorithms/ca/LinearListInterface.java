@@ -8,15 +8,20 @@ package data.structures.and.algorithms.ca;
  *
  * @author anton
  */
-public interface QueueInterface {
+public interface LinearListInterface {
 
-    public Object dequeue();
+    public Object remove(int index);
 
-    public void enqueue(Object e);
+    public void add(int index, Object e);
 
-    public Object front();
+    public void add(Object e);
 
     public boolean isEmpty();
 
+    public Object get(int index);
+
+    public String printList();
+
     public int size();
+
 }

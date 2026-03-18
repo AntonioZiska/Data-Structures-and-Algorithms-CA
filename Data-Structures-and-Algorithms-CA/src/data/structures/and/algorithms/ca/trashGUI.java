@@ -192,13 +192,21 @@ public class trashGUI extends javax.swing.JFrame {
     private void showAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAllButtonActionPerformed
         // TODO add your handling code here:
         clearAll();
-        displayTA.append(trashStack.displayStack());
+        if (trashStack.isEmpty()) {
+            displayTA.append("The stack is empty");
+        } else {
+            displayTA.append(trashStack.displayStack());
+        }
     }//GEN-LAST:event_showAllButtonActionPerformed
 
     private void showButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showButtonActionPerformed
         // TODO add your handling code here:
         clearAll();
-        displayTA.append(trashStack.peek().toString());
+        if (trashStack.isEmpty()) {
+            displayTA.append("The stack is empty");
+        } else {
+            displayTA.append(trashStack.peek().toString());
+        }
     }//GEN-LAST:event_showButtonActionPerformed
 
     /**

@@ -171,7 +171,11 @@ public class eventGUI extends javax.swing.JFrame {
     private void showButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showButtonActionPerformed
         // TODO add your handling code here:
         clearAll();
-        displayTA.append(queue.front().toString());
+        if (queue.isEmpty()) {
+            displayTA.append("The queue is empty.");
+        } else {
+            displayTA.append(queue.front().toString());
+        }
     }//GEN-LAST:event_showButtonActionPerformed
 
     private void nameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTFActionPerformed

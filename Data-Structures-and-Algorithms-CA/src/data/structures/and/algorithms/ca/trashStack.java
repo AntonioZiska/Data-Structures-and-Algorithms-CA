@@ -36,14 +36,14 @@ public class trashStack implements StackInterface {
 
     @Override
     public String displayStack() {
-        int iCount;
+        int i;
         String Message = "";
         if (stack.isEmpty()) {
-            Message = Message.concat("The stack is empty, there is nothing to display.");
+            Message = Message.concat("The stack is empty");
         } else {
             Message = "The stack contains: ";
-            for (iCount = 0; iCount < stack.size(); iCount++) {
-                Message = Message.concat(stack.get(iCount) + ", ");
+            for (i = 0; i < stack.size(); i++) {
+                Message = Message.concat(stack.get(i) + ", ");
             }
         }
         return Message;
