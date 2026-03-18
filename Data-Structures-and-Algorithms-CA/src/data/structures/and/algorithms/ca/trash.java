@@ -14,6 +14,10 @@ public class trash {
     private int quantity;
     private int value;
 
+    public trash() {
+
+    }
+
     public String getName() {
         return name;
     }

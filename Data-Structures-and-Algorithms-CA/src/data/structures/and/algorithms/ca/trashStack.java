@@ -12,10 +12,10 @@ import java.util.*;
  */
 public class trashStack implements StackInterface {
 
-    private final ArrayList<String> stack;
+    private final ArrayList<trash> stack;
 
-    public trashStack(ArrayList stack) {
-        this.stack = stack;
+    public trashStack() {
+        stack = new ArrayList<>();
     }
 
     @Override
@@ -50,8 +50,13 @@ public class trashStack implements StackInterface {
     }
 
     @Override
+    public String toString() {
+        return "trashStack{" + "stack=" + stack + '}';
+    }
+
+    @Override
     public void push(Object newelement) {
-        stack.add(0, (String) newelement);
+        stack.add(0, (trash) newelement);
     }
 
     @Override

@@ -10,6 +10,8 @@ package data.structures.and.algorithms.ca;
  */
 public class trashGUI extends javax.swing.JFrame {
 
+    trashStack trashStack = new trashStack();
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(trashGUI.class.getName());
 
     /**
@@ -28,19 +30,19 @@ public class trashGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nameTextField = new javax.swing.JTextField();
-        quantityTextField = new javax.swing.JTextField();
-        valueTextField = new javax.swing.JTextField();
+        nameTF = new javax.swing.JTextField();
+        quantityTF = new javax.swing.JTextField();
+        valueTF = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        displayTA = new javax.swing.JTextArea();
         backButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
         removeButton = new javax.swing.JButton();
         showAllButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        showButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,9 +52,9 @@ public class trashGUI extends javax.swing.JFrame {
 
         jLabel3.setText("Value:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        displayTA.setColumns(20);
+        displayTA.setRows(5);
+        jScrollPane1.setViewportView(displayTA);
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -62,12 +64,32 @@ public class trashGUI extends javax.swing.JFrame {
         });
 
         addButton.setText("Add to stack");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         removeButton.setText("Remove from stack");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
 
         showAllButton.setText("Show all");
+        showAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showAllButtonActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Show newest");
+        showButton.setText("Show newest");
+        showButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,7 +102,7 @@ public class trashGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(showButton)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -94,9 +116,9 @@ public class trashGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(valueTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                                .addComponent(quantityTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(nameTextField, javax.swing.GroupLayout.Alignment.LEADING)))))
+                                .addComponent(valueTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                                .addComponent(quantityTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(nameTF, javax.swing.GroupLayout.Alignment.LEADING)))))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -104,15 +126,15 @@ public class trashGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(quantityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quantityTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(valueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valueTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,7 +146,7 @@ public class trashGUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(showAllButton)))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(showButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(backButton)
                 .addContainerGap())
@@ -139,6 +161,45 @@ public class trashGUI extends javax.swing.JFrame {
         mygui.setVisible(true);
         dispose();
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // TODO add your handling code here:
+        trash placeholder = new trash();
+
+        placeholder.setName(nameTF.getText());
+        int quantity = Integer.parseInt(quantityTF.getText());
+        int value = Integer.parseInt(valueTF.getText());
+
+        placeholder.setQuantity(quantity);
+        placeholder.setValue(value);
+        trashStack.push(placeholder);
+
+        clearAll();
+        displayTA.setText("Trash added to stack");
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        // TODO add your handling code here:
+        clearAll();
+        if (trashStack.isEmpty()) {
+            displayTA.append("The stack is empty");
+        } else {
+            String removed = (String) trashStack.pop().toString();
+            displayTA.append(removed + " has been removed from the stack");
+        }
+    }//GEN-LAST:event_removeButtonActionPerformed
+
+    private void showAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAllButtonActionPerformed
+        // TODO add your handling code here:
+        clearAll();
+        displayTA.append(trashStack.displayStack());
+    }//GEN-LAST:event_showAllButtonActionPerformed
+
+    private void showButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showButtonActionPerformed
+        // TODO add your handling code here:
+        clearAll();
+        displayTA.append(trashStack.peek().toString());
+    }//GEN-LAST:event_showButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,16 +229,23 @@ public class trashGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton backButton;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextArea displayTA;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField nameTextField;
-    private javax.swing.JTextField quantityTextField;
+    private javax.swing.JTextField nameTF;
+    private javax.swing.JTextField quantityTF;
     private javax.swing.JButton removeButton;
     private javax.swing.JButton showAllButton;
-    private javax.swing.JTextField valueTextField;
+    private javax.swing.JButton showButton;
+    private javax.swing.JTextField valueTF;
     // End of variables declaration//GEN-END:variables
+
+    private void clearAll() {
+        nameTF.setText("");
+        quantityTF.setText("");
+        valueTF.setText("");
+        displayTA.setText("");
+    }
 }
